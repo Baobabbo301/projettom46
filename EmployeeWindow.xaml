@@ -1,0 +1,107 @@
+﻿<Window x:Class="stoneFenceProj.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stoneFenceProj"
+        mc:Ignorable="d"
+        Title="EmployeeWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Background="Transparent" Loaded="Window_Loaded">
+    <Border  CornerRadius="10" Background="#FFBFB97F" >
+        <Grid>
+            <TabControl Background="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="TabControl_SelectionChanged" >
+
+                <TabItem Height="50" Header="Событмя" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="0,0,-20,0">
+                    <Grid>
+                        <DataGrid Name="EventGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Наименование" Binding="{Binding name}"/>
+                                <DataGridTextColumn Header="Дата" Binding="{Binding date, StringFormat='d'}"/>
+                                <DataGridTextColumn Header="Время" Binding="{Binding time, StringFormat='t'}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddEvent" Margin="604,380,0,0" Content="Добавить" Click="btnAddEvent_Click"  />
+                        <Button x:Name="btnEditEvent" Margin="409,380,195,0" Content="Редактировать" Click="btnEditEvent_Click"  />
+                    </Grid>
+                </TabItem>
+
+                <TabItem  Height="50" Header="Дети" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="30,0,-65,0">
+                    <Grid>
+                        <DataGrid Name="ChildGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding first_name}"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding last_name}"/>
+                                <DataGridTextColumn Header="Дата рождения" Binding="{Binding date_of_birth,StringFormat='d'}"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding address}"/>
+                                <DataGridTextColumn Header="Контакты родителя" Binding="{Binding parent_contact}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddChild" Margin="604,380,0,0" Content="Добавить" Click="btnAddChild_Click" />
+                        <Button x:Name="btnEditChild" Margin="409,380,195,0" Content="Редактировать" Click="btnEditChild_Click"  />
+                    </Grid>
+                </TabItem>
+                <TabItem  Height="50" Header="События/Дети" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="75,0,-105,0">
+                    <Grid>
+                        <DataGrid Name="ChEveGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Id ребенка" Binding="{Binding child_id}"/>
+                                <DataGridTextColumn Header="Id событмя" Binding="{Binding event_id}"/>
+                                <DataGridTextColumn Header="Посещение" Binding="{Binding attendance}"/>
+                                <DataGridTextColumn Header="Заметки" Binding="{Binding notes}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddCheve" Margin="604,380,0,0" Content="Добавить" Click="btnAddCheve_Click" />
+                        <Button x:Name="btnEditCheve" Margin="409,380,195,0" Content="Редактировать" Click="btnEditCheve_Click"  />
+                    </Grid>
+                </TabItem>
+                <TabItem  Height="50" Header="Образование" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="115,0,-115,0">
+                    <Grid>
+                        <DataGrid Name="EduGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Id ребенка" Binding="{Binding child_id}"/>
+                                <DataGridTextColumn Header="Школа" Binding="{Binding school}"/>
+                                <DataGridTextColumn Header="Программа" Binding="{Binding education_program}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddEdu" Margin="604,380,0,0" Content="Добавить" Click="btnAddEdu_Click" />
+                        <Button x:Name="btnEditEdu" Margin="409,380,195,0" Content="Редактировать" Click="btnEditEdu_Click"  />
+                    </Grid>
+                </TabItem>
+                <TabItem  Height="50" Header="Здоровье" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="125,0,-125,0">
+                    <Grid>
+                        <DataGrid Name="HealthGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Id ребенка" Binding="{Binding child_id}"/>
+                                <DataGridTextColumn Header="Диагноз" Binding="{Binding diagnosis}"/>
+                                <DataGridTextColumn Header="Ограничения" Binding="{Binding limitations}"/>
+                                <DataGridTextColumn Header="История" Binding="{Binding medical_history}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddHealth" Margin="604,380,0,0" Content="Добавить" Click="btnAddHealth_Click" />
+                        <Button x:Name="btnEditHealth" Margin="409,380,195,0" Content="Редактировать" Click="btnEditHealth_Click"  />
+                    </Grid>
+                </TabItem>
+                <TabItem  Height="50" Header="Заметки" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="135,0,-135,0">
+                    <Grid>
+                        <DataGrid Name="NoteGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="Id ребенка" Binding="{Binding child_id}"/>
+                                <DataGridTextColumn Header="Id пользователя" Binding="{Binding user_id}" Visibility="Collapsed"/>
+                                <DataGridTextColumn Header="Текст" Binding="{Binding note_text}"/>
+                                <DataGridTextColumn Header="Дата добавления" Binding="{Binding date_created}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddNote" Margin="604,380,0,0" Content="Добавить" Click="btnAddNote_Click" />
+                        <Button x:Name="btnEditNote" Margin="409,380,195,0" Content="Редактировать" Click="btnEditNote_Click"  />
+                    </Grid>
+                </TabItem>
+                <TabItem Name="Exit_tab" Width="100" Height="50" Header="Выход" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="145,0,-135,0"/>
+            </TabControl>
+        </Grid>
+    </Border>
+</Window>

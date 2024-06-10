@@ -1,0 +1,51 @@
+﻿<Window x:Class="stoneFenceProj.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stoneFenceProj"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Background="Transparent" Loaded="Window_Loaded">
+    <Border  CornerRadius="10" Background="#FFBFB97F" >
+        <Grid>
+            <TabControl Background="{x:Null}" BorderBrush="{x:Null}" SelectionChanged="TabControl_SelectionChanged" >
+
+                <TabItem  Height="50" Header="Пользователи" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="0,0,-20,0">
+                    <Grid>
+                        <DataGrid Name="UserGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}"/>
+                                <DataGridTextColumn Header="Имя пользователя" Binding="{Binding username}"/>
+                                <DataGridTextColumn Header="Пароль" Binding="{Binding password}"/>
+                                <DataGridTextColumn Header="Роль" Binding="{Binding role}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddUser" Margin="604,380,0,0" Content="Добавить"  Click="btnAddUser_Click"/>
+                        <Button x:Name="btnEditUser" Margin="409,380,195,0" Content="Редактировать"  Click="btnEditUser_Click"/>
+                        <Button x:Name="btnDelUser" Margin="214,380,390,0" Content="Удалить"  Click="btnDelUser_Click"/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem  Height="50" Header="Дети" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}" Margin="30,0,-65,0">
+                    <Grid>
+                        <DataGrid Name="ChildGrid" Margin="0,0,0,62" ItemsSource="{Binding}" FontFamily="Rockwell Extra Bold" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding id}" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding first_name}"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding last_name}"/>
+                                <DataGridTextColumn Header="Дата рождения" Binding="{Binding date_of_birth,StringFormat='d'}"/>
+                                <DataGridTextColumn Header="Адрес" Binding="{Binding address}"/>
+                                <DataGridTextColumn Header="Контакты родителя" Binding="{Binding parent_contact}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button x:Name="btnAddChild" Margin="604,380,0,0" Content="Добавить" Click="btnAddChild_Click"/>
+                        <Button x:Name="btnEditChild" Margin="409,380,195,0" Content="Редактировать"  Click="btnEditChild_Click"/>
+                        <Button x:Name="btnDelChild" Margin="214,380,390,0" Content="Удалить" Click="btnDelChild_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Placeholder" Visibility="Hidden" Width="510"/>
+                <TabItem Name="Exit_tab" Width="100" Height="50" Header="Выход" FontWeight="Bold" FontFamily="Ink Free" FontSize="16" Style="{StaticResource TabItemStyle}"/>
+            </TabControl>
+        </Grid>
+    </Border>
+</Window>
